@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# Outreach Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+動画制作・SNS運用代行の営業候補を管理するための小さなWebアプリです。営業先のURL、連絡方法、ステータス、優先度、メモを保存し、検索・絞り込み・編集・削除ができます。
 
-Currently, two official plugins are available:
+## 機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 営業先の登録、編集、削除
+- 営業先名、種別、URL、連絡方法、ステータス、優先度、メモの管理
+- カード形式の一覧表示
+- キーワード検索
+- ステータスと優先度での絞り込み
+- localStorageへの自動保存
+- 初回表示用のサンプルデータ3件
+- PC、スマホ両対応のレスポンシブUI
 
-## React Compiler
+## 技術構成
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- TypeScript
+- React
+- Vite
+- localStorage
 
-## Expanding the Oxlint configuration
+外部API、ログイン、データベースは使用していません。
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## 起動方法
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+表示されたローカルURLをブラウザで開いて確認します。
+
+## ビルド
+
+```bash
+npm run build
+```
+
+ビルド成果物は `dist` に出力されます。
