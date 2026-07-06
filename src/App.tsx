@@ -114,7 +114,7 @@ function App() {
       <header className="app-header">
         <div>
           <p className="eyebrow">Outreach Tracker</p>
-          <h1>営業候補を整理して、次の連絡を見失わない。</h1>
+          <h1>営業先候補一覧</h1>
         </div>
         <div className="summary">
           <span>{leads.length}</span>
