@@ -16,10 +16,7 @@ export function LeadFilters({
   return (
     <section className="filters" aria-label="営業先の検索と絞り込み">
       <div className="section-heading">
-        <div>
-          <p className="eyebrow">Search</p>
-          <h2>一覧</h2>
-        </div>
+        <p className="eyebrow">Search</p>
         <p className="result-count">
           {resultCount} / {totalCount} 件
         </p>
