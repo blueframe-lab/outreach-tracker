@@ -41,9 +41,10 @@ export type Lead = {
   priority: Priority
   memo: string
   createdAt: string
+  deletedAt?: string
 }
 
-export type LeadFormValues = Omit<Lead, 'id' | 'createdAt'>
+export type LeadFormValues = Omit<Lead, 'id' | 'createdAt' | 'deletedAt'>
 
 export type Filters = {
   keyword: string

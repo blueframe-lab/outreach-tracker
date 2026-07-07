@@ -4,6 +4,14 @@
   padding: 32px 0;
 }
 
+body.theme-light {
+  background: #eef2f7;
+}
+
+body.theme-dark {
+  background: #0f172a;
+}
+
 .app-header {
   display: flex;
   align-items: flex-end;
@@ -33,7 +41,10 @@
 }
 
 .summary {
-  min-width: 120px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(92px, 1fr));
+  gap: 10px;
+  min-width: 230px;
   padding: 16px;
   text-align: center;
   background: #f8fafc;
@@ -52,6 +63,81 @@
 .summary small {
   color: #64748b;
   font-weight: 700;
+}
+
+.summary-muted span {
+  color: #7f1d1d;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  min-height: 40px;
+  padding: 9px 14px;
+  color: #1e293b;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: #f8fafc;
+}
+
+.view-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border: 1px solid #dde3ea;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+.view-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: #475569;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.view-tab span {
+  min-width: 28px;
+  padding: 2px 8px;
+  color: #334155;
+  background: #e2e8f0;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.view-tab.is-active {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.view-tab.is-active span {
+  color: #ffffff;
+  background: #2563eb;
 }
 
 .workspace {
@@ -78,6 +164,12 @@
   padding: 22px;
 }
 
+.lead-form.is-editing {
+  background: #f8fbff;
+  border-color: #93c5fd;
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.14);
+}
+
 .section-heading {
   display: flex;
   align-items: center;
@@ -88,6 +180,27 @@
 
 .section-heading h2 {
   margin: 0;
+}
+
+.form-title-row,
+.card-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.editing-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 label {
@@ -178,6 +291,16 @@ textarea:focus {
   background: #fee2e2;
 }
 
+.button-permanent-danger {
+  color: #ffffff;
+  background: #991b1b;
+  border-color: #7f1d1d;
+}
+
+.button-permanent-danger:hover {
+  background: #7f1d1d;
+}
+
 .list-panel {
   display: grid;
   gap: 16px;
@@ -207,6 +330,18 @@ textarea:focus {
   border: 1px solid #dde3ea;
   border-radius: 8px;
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+.lead-card.is-editing {
+  background: #f8fbff;
+  border-color: #60a5fa;
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.16);
+}
+
+.lead-card.is-trash {
+  background: #fffafa;
+  border-color: #fecaca;
+  box-shadow: 0 10px 24px rgba(127, 29, 29, 0.08);
 }
 
 .card-top {
@@ -245,6 +380,11 @@ textarea:focus {
   font-weight: 800;
   padding: 0 10px;
   white-space: nowrap;
+}
+
+.badge-trash {
+  color: #991b1b;
+  background: #fee2e2;
 }
 
 .status-未送信 {
@@ -355,6 +495,259 @@ textarea:focus {
   color: #64748b;
 }
 
+.trash-box,
+.trash-view {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  background: #fff7f7;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+}
+
+.trash-view {
+  box-shadow: 0 12px 30px rgba(127, 29, 29, 0.08);
+}
+
+.trash-box-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.trash-box-heading h2 {
+  margin: 0;
+}
+
+.trash-count {
+  margin: 0;
+  padding: 7px 10px;
+  color: #991b1b;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.trash-empty {
+  padding: 18px;
+  color: #64748b;
+  background: #ffffff;
+  border: 1px dashed #fca5a5;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.theme-dark .app-header,
+.theme-dark .view-tabs,
+.theme-dark .lead-form,
+.theme-dark .filters,
+.theme-dark .empty-state,
+.theme-dark .lead-card {
+  background: #172033;
+  border-color: #334155;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.theme-dark .app-header h1,
+.theme-dark .section-heading h2,
+.theme-dark .lead-card h3,
+.theme-dark .empty-state h3,
+.theme-dark .trash-box-heading h2 {
+  color: #f8fafc;
+}
+
+.theme-dark .eyebrow,
+.theme-dark .lead-meta a {
+  color: #93c5fd;
+}
+
+.theme-dark .summary {
+  background: #111827;
+  border-color: #334155;
+}
+
+.theme-dark .summary span {
+  color: #f8fafc;
+}
+
+.theme-dark .summary small,
+.theme-dark .lead-type,
+.theme-dark .lead-meta dt,
+.theme-dark .empty-state p,
+.theme-dark .trash-empty {
+  color: #cbd5e1;
+}
+
+.theme-dark .summary-muted span {
+  color: #fca5a5;
+}
+
+.theme-dark .theme-toggle,
+.theme-dark .button-secondary {
+  color: #e2e8f0;
+  background: #1e293b;
+  border-color: #475569;
+}
+
+.theme-dark .theme-toggle:hover,
+.theme-dark .button-secondary:hover {
+  background: #334155;
+}
+
+.theme-dark .view-tab {
+  color: #cbd5e1;
+}
+
+.theme-dark .view-tab span {
+  color: #e2e8f0;
+  background: #334155;
+}
+
+.theme-dark .view-tab.is-active {
+  color: #bfdbfe;
+  background: #1e3a5f;
+  border-color: #3b82f6;
+}
+
+.theme-dark .view-tab.is-active span {
+  color: #0f172a;
+  background: #93c5fd;
+}
+
+.theme-dark label {
+  color: #dbeafe;
+}
+
+.theme-dark input,
+.theme-dark select,
+.theme-dark textarea {
+  color: #f8fafc;
+  background: #0f172a;
+  border-color: #475569;
+}
+
+.theme-dark input::placeholder,
+.theme-dark textarea::placeholder {
+  color: #94a3b8;
+}
+
+.theme-dark input:focus,
+.theme-dark select:focus,
+.theme-dark textarea:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.18);
+}
+
+.theme-dark .lead-form.is-editing,
+.theme-dark .lead-card.is-editing {
+  background: #13243e;
+  border-color: #60a5fa;
+  box-shadow: 0 16px 34px rgba(59, 130, 246, 0.2);
+}
+
+.theme-dark .editing-label {
+  color: #dbeafe;
+  background: #1d4ed8;
+  border-color: #60a5fa;
+}
+
+.theme-dark .lead-card.is-trash,
+.theme-dark .trash-view {
+  background: #2a1620;
+  border-color: #7f1d1d;
+  box-shadow: 0 12px 30px rgba(127, 29, 29, 0.22);
+}
+
+.theme-dark .trash-count,
+.theme-dark .badge-trash {
+  color: #fecaca;
+  background: #7f1d1d;
+  border-color: #991b1b;
+}
+
+.theme-dark .trash-empty {
+  background: #172033;
+  border-color: #7f1d1d;
+}
+
+.theme-dark .lead-meta dd,
+.theme-dark .memo,
+.theme-dark .result-count {
+  color: #e2e8f0;
+}
+
+.theme-dark .memo {
+  background: #111827;
+}
+
+.theme-dark .button-danger {
+  color: #fecaca;
+  background: #3f1d24;
+  border-color: #7f1d1d;
+}
+
+.theme-dark .button-danger:hover {
+  background: #5f1d2a;
+}
+
+.theme-dark .button-permanent-danger {
+  color: #ffffff;
+  background: #dc2626;
+  border-color: #f87171;
+}
+
+.theme-dark .button-permanent-danger:hover {
+  background: #b91c1c;
+}
+
+.theme-dark .status-未送信 {
+  color: #e2e8f0;
+  background: #334155;
+}
+
+.theme-dark .status-送信済み {
+  color: #bfdbfe;
+  background: #1e3a8a;
+}
+
+.theme-dark .status-要追撃 {
+  color: #fde68a;
+  background: #78350f;
+}
+
+.theme-dark .status-返信あり {
+  color: #bbf7d0;
+  background: #14532d;
+}
+
+.theme-dark .status-商談化 {
+  color: #ddd6fe;
+  background: #4c1d95;
+}
+
+.theme-dark .status-NG {
+  color: #fecaca;
+  background: #7f1d1d;
+}
+
+.theme-dark .priority-高 {
+  color: #fecdd3;
+  background: #881337;
+}
+
+.theme-dark .priority-中 {
+  color: #bae6fd;
+  background: #075985;
+}
+
+.theme-dark .priority-低 {
+  color: #d9f99d;
+  background: #365314;
+}
+
 @media (max-width: 900px) {
   .workspace {
     grid-template-columns: 1fr;
@@ -372,8 +765,10 @@ textarea:focus {
   }
 
   .app-header,
+  .header-actions,
   .card-top,
-  .section-heading {
+  .section-heading,
+  .trash-box-heading {
     align-items: stretch;
     flex-direction: column;
   }
@@ -384,6 +779,15 @@ textarea:focus {
 
   .summary {
     text-align: left;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .theme-toggle,
+  .summary {
+    width: 100%;
   }
 
   .form-grid,

@@ -35,11 +35,14 @@ export function LeadForm({
   }
 
   return (
-    <form className="lead-form" onSubmit={handleSubmit}>
+    <form className={`lead-form${editing ? ' is-editing' : ''}`} onSubmit={handleSubmit}>
       <div className="section-heading">
         <div>
           <p className="eyebrow">Lead Form</p>
-          <h2>{editing ? '営業先を編集' : '営業先を登録'}</h2>
+          <div className="form-title-row">
+            <h2>{editing ? '営業先を編集' : '営業先を登録'}</h2>
+            {editing && <span className="editing-label">現在編集中</span>}
+          </div>
         </div>
         {editing && (
           <button className="button button-secondary" type="button" onClick={onCancel}>

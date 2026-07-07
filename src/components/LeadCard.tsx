@@ -2,19 +2,39 @@ import type { Lead } from '../types'
 
 type LeadCardProps = {
   lead: Lead
-  onEdit: (lead: Lead) => void
-  onDelete: (id: string) => void
+  isEditing?: boolean
+  variant?: 'active' | 'trash'
+  onEdit?: (lead: Lead) => void
+  onDelete?: (id: string) => void
+  onRestore?: (id: string) => void
+  onPermanentDelete?: (id: string) => void
 }
 
-export function LeadCard({ lead, onEdit, onDelete }: LeadCardProps) {
+export function LeadCard({
+  lead,
+  isEditing = false,
+  variant = 'active',
+  onEdit,
+  onDelete,
+  onRestore,
+  onPermanentDelete,
+}: LeadCardProps) {
+  const isTrash = variant === 'trash'
+
   return (
-    <article className="lead-card">
+    <article
+      className={`lead-card${isEditing ? ' is-editing' : ''}${isTrash ? ' is-trash' : ''}`}
+    >
       <div className="card-top">
         <div>
           <p className="lead-type">{lead.type}</p>
-          <h3>{lead.name}</h3>
+          <div className="card-title-row">
+            <h3>{lead.name}</h3>
+            {isEditing && <span className="editing-label">編集中</span>}
+          </div>
         </div>
         <div className="badge-row">
+          {isTrash && <span className="badge badge-trash">削除済み</span>}
           <span className={`badge status-${lead.status}`}>{lead.status}</span>
           <span className={`badge priority-${lead.priority}`}>優先度 {lead.priority}</span>
         </div>
@@ -38,12 +58,41 @@ export function LeadCard({ lead, onEdit, onDelete }: LeadCardProps) {
       {lead.memo && <p className="memo">{lead.memo}</p>}
 
       <div className="card-actions">
-        <button className="button button-secondary" type="button" onClick={() => onEdit(lead)}>
-          編集
-        </button>
-        <button className="button button-danger" type="button" onClick={() => onDelete(lead.id)}>
-          削除
-        </button>
+        {isTrash ? (
+          <>
+            <button
+              className="button button-secondary"
+              type="button"
+              onClick={() => onRestore?.(lead.id)}
+            >
+              復元
+            </button>
+            <button
+              className="button button-permanent-danger"
+              type="button"
+              onClick={() => onPermanentDelete?.(lead.id)}
+            >
+              完全に削除
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className="button button-secondary"
+              type="button"
+              onClick={() => onEdit?.(lead)}
+            >
+              編集
+            </button>
+            <button
+              className="button button-danger"
+              type="button"
+              onClick={() => onDelete?.(lead.id)}
+            >
+              削除
+            </button>
+          </>
+        )}
       </div>
     </article>
   )
