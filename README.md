@@ -4,7 +4,7 @@
 
 ## 公開URL
 
-https://outreach-tracker.mademperor1108.workers.dev
+https://outreach-tracker.blueflame-lab.workers.dev
 
 ## 概要
 
